@@ -37,6 +37,7 @@ const TodayMenuCarousel = () => {
 
   return (
     <ScrollView
+      decelerationRate={0}
       ref={scrollViewRef}
       horizontal
       pagingEnabled
@@ -46,23 +47,11 @@ const TodayMenuCarousel = () => {
       scrollEventThrottle={16}
     >
       {menuItems.map((item, index) => (
-        <MenuCard
-          key={index}
-          menu={item.menu}
-          cost={item.cost}
-          restaurant={item.restaurant}
-          imgSource={item.imgSource}
-        />
+        <MenuCard key={index} menu={item} />
       ))}
       {/* 아이템들을 중복하여 배치 */}
-      {menuItems.map((item, index) => (
-        <MenuCard
-          key={index + menuItems.length}
-          menu={item.menu}
-          cost={item.cost}
-          restaurant={item.restaurant}
-          imgSource={item.imgSource}
-        />
+      {menuItems.map((menu, index) => (
+        <MenuCard key={index + menuItems.length} menu={menu} />
       ))}
     </ScrollView>
   );
