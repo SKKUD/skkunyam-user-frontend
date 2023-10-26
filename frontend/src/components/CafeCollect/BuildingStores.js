@@ -18,6 +18,7 @@ const BuildingStores = ({ stores }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    paddingBottom: 40,
   }
 });
 

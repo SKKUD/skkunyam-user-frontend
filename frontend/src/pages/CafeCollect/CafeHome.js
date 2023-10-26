@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import Header from '../../components/CafeCollect/Header';
 import SectionGuide from '../../components/CafeCollect/SectionGuide';
 import NearStores from '../../components/CafeCollect/NearStores';
@@ -21,7 +21,7 @@ const CafeHomeScreen = () => {
     
 
     return (
-        <View style={styles.container}>
+        <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
             <Header icon="md-map-outline"/>
             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text style={styles.boldText}>카페 모아보기</Text>
@@ -37,7 +37,7 @@ const CafeHomeScreen = () => {
             />
             <BuildingStores stores={selectedStores}/>
 
-        </View>
+        </ScrollView>
     )
 }
 
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     container: {
         padding: 20,
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
     },
     boldText: {
         fontSize: 24,
