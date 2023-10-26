@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   signUpText: {
     color: "#8B8B8B",
     fontSize: 12,
-    // fontWeight: "bold",
+    fontWeight: "bold",
     paddingTop: 24,
   },
 });
