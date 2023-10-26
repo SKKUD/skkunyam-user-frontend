@@ -1,30 +1,30 @@
 export const menuItems = [
   {
-    menu: "베이컨 크림 파스타",
+    name: "베이컨 크림 파스타",
     cost: "5,600",
     restaurant: "금잔디 식당",
     imgSource: require("../../../assets/images/todayMenuPasta.png"),
   },
   {
-    menu: "중국식 계란 새우 볶음밥",
+    name: "중국식 계란 새우 볶음밥",
     cost: "5,600",
     restaurant: "은행골",
     imgSource: require("../../../assets/images/todayMenuRice.png"),
   },
   {
-    menu: "버섯 두부 된장찌개",
+    name: "버섯 두부 된장찌개",
     cost: "5,600",
     restaurant: "금잔디 식당",
     imgSource: require("../../../assets/images/todayMenuSoup.png"),
   },
   {
-    menu: "간장연어구이",
+    name: "간장연어구이",
     cost: "5,600",
     restaurant: "은행골",
     imgSource: require("../../../assets/images/todayMenuSalmon.png"),
   },
   {
-    menu: "바짝 목살 구이",
+    name: "바짝 목살 구이",
     cost: "5,600",
     restaurant: "금잔디 식당",
     imgSource: require("../../../assets/images/todayMenuBeaf.png"),

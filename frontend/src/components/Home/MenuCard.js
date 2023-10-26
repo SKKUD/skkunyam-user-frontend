@@ -1,10 +1,17 @@
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-const MenuCard = ({ menu, cost, restaurant, imgSource }) => {
+const MenuCard = ({ menu }) => {
   return (
+    // <TouchableOpacity activeOpacity={0.8}>
     <View style={styles.container}>
-      <ImageBackground style={styles.bgImage} source={imgSource}>
+      <ImageBackground style={styles.bgImage} source={menu?.imgSource}>
         <LinearGradient
           colors={["transparent", "transparent", "#4f4f4f"]}
           start={{ x: 0.5, y: 0.1 }}
@@ -12,16 +19,17 @@ const MenuCard = ({ menu, cost, restaurant, imgSource }) => {
         >
           <View style={styles.cardHeader}>
             <View style={styles.restaurant}>
-              <Text style={styles.restaurantText}>{restaurant}</Text>
+              <Text style={styles.restaurantText}>{menu?.restaurant}</Text>
             </View>
           </View>
           <View style={styles.cardBody}>
-            <Text style={styles.menuText}>{menu}</Text>
-            <Text style={styles.costText}>{cost}원</Text>
+            <Text style={styles.menuText}>{menu?.name}</Text>
+            <Text style={styles.costText}>{menu?.cost}원</Text>
           </View>
         </LinearGradient>
       </ImageBackground>
     </View>
+    // </TouchableOpacity>
   );
 };
 
@@ -29,7 +37,6 @@ const styles = StyleSheet.create({
   container: {
     width: 350,
     height: 160,
-    backgroundColor: "#BBBBBB",
     borderRadius: 8,
   },
   linearGradient: {

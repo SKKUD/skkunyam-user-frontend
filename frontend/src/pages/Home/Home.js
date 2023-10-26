@@ -18,11 +18,26 @@ import MostStoreCard from "../../components/Home/MostStoreCard";
 import MostMenuCard from "../../components/Home/MostMenuCard";
 
 const Home = () => {
+  // 폰트 불러오기
+  const [isFont, setIsFont] = useState(false);
+  useEffect(() => {
+    const loadFont = async () => {
+      await Font.loadAsync({
+        "Rubik Mono One": require("../../../fonts/RubikMonoOne-Regular.ttf"),
+        "Pretendard Bold": require("../../../fonts/Pretendard-Bold.otf"),
+        "Pretendard Regular": require("../../../fonts/Pretendard-Regular.otf"),
+      });
+      setIsFont(true);
+    };
+    loadFont();
+  }, []);
+
   const user = {
     name: "스꾸디",
     point: "7,860",
   };
 
+  // 명륜/율전 선택
   const [isMyeongryun, setIsMyeongryun] = useState(true);
   const onMyeongryunClick = () => {
     console.log("명륜 clicked");
@@ -33,39 +48,48 @@ const Home = () => {
     setIsMyeongryun(false);
   };
 
-  const [isFont, setIsFont] = useState(false);
-  useEffect(() => {
-    const loadFont = async () => {
-      await Font.loadAsync({
-        "Rubik Mono One": require("../../../fonts/RubikMonoOne-Regular.ttf"),
-        "Pretendard-Bold": require("../../../fonts/Pretendard-Bold.otf"),
-        "Pretendard-Regular": require("../../../fonts/Pretendard-Regular.otf"),
-      });
-      setIsFont(true);
-    };
-    loadFont();
-  }, []);
+  const onCafeCollectClick = () => {
+    console.log("카페 모아보기 clicked");
+  };
+  const onRestaurantCollectClick = () => {
+    console.log("식당 모아보기 clicked");
+  };
+
+  const onMostStoreMoreClick = () => {
+    console.log("가장 많이 이용한 매장 더보기 clicked");
+  };
+  const onMostMenuCMorelick = () => {
+    console.log("가장 많이 주문한 메뉴 더보기 clicked");
+  };
+
+  const onMyStampClick = () => {
+    console.log("내 스탬프 clicked");
+  };
+  const onMyPointClick = () => {
+    console.log("내 포인트 clicked");
+  };
 
   return (
     <View style={styles.container}>
       {/* 헤더 */}
       <HomeHeader />
-      <ScrollView>
-        {/* 명/율 선택 */}
-        <View style={styles.radioContainer}>
-          <RadioButton
-            label="명륜"
-            checked={isMyeongryun}
-            onPressed={onMyeongryunClick}
-          />
-          <RadioButton
-            label="율전"
-            checked={!isMyeongryun}
-            onPressed={onYuljeonClick}
-          />
-        </View>
-        {/* 홍보? */}
-        {isFont && (
+      {isFont && (
+        <ScrollView>
+          {/* 명/율 선택 */}
+          <View style={styles.radioContainer}>
+            <RadioButton
+              label="명륜"
+              checked={isMyeongryun}
+              onPressed={onMyeongryunClick}
+            />
+            <RadioButton
+              label="율전"
+              checked={!isMyeongryun}
+              onPressed={onYuljeonClick}
+            />
+          </View>
+          {/* 홍보? */}
+
           <View style={styles.festaContainer}>
             <ImageBackground
               style={styles.bgImage}
@@ -80,120 +104,146 @@ const Home = () => {
               </View>
             </ImageBackground>
           </View>
-        )}
-        {/* 바로주문하기 */}
-        <View style={styles.quickOrderContainer}>
-          <View style={styles.quickOrderHeader}>
-            <Text style={styles.quickOrderTitle}>바로주문하기</Text>
-          </View>
-          <View style={styles.quickOrderBody}>
-            <Text>여기 바뀔 것 같아서 나중에 만들게요</Text>
-          </View>
-        </View>
-        {/* 오늘의 메뉴 */}
-        <View style={styles.todayMenuContainer}>
-          <View style={styles.todayMenuHeader}>
-            <Text style={styles.todayMenuTitle}>오늘의 메뉴</Text>
-          </View>
-          <TodayMenuCarousel />
-        </View>
-        {/* 모아보기 */}
-        <View style={styles.collectContainer}>
-          <TouchableOpacity style={styles.collectButton}>
-            <Image
-              style={styles.collectImage}
-              source={require("../../../assets/icons/coffeeCupIcon.png")}
-            />
-            <Text style={styles.collectText}>카페 모아보기</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.collectButton}>
-            <Image
-              style={styles.collectImage}
-              source={require("../../../assets/icons/cutleryIcon.png")}
-            />
-            <Text style={styles.collectText}>식당 모아보기</Text>
-          </TouchableOpacity>
-        </View>
-        {/* 가장 많이 이용한 매장 */}
-        <View style={styles.mostContainer}>
-          <View style={styles.mostHeader}>
-            <View style={styles.mostHeaderLeft}>
-              <Text style={styles.mostTitle}>{user.name} 님이</Text>
-              <Text style={styles.mostTitle}>가장 많이 이용한 매장이에요!</Text>
+          {/* 바로주문하기 */}
+          <View style={styles.quickOrderContainer}>
+            <View style={styles.quickOrderHeader}>
+              <Text style={styles.quickOrderTitle}>바로주문하기</Text>
             </View>
-            <TouchableOpacity style={styles.mostHeaderRight}>
-              <Text stlye={styles.moreText}>더보기</Text>
-              <Image source={require("../../../assets/icons/rightIcon.png")} />
+            <View style={styles.quickOrderBody}>
+              <Text>여기 바뀔 것 같아서 나중에 만들게요</Text>
+            </View>
+          </View>
+          {/* 오늘의 메뉴 */}
+          <View style={styles.todayMenuContainer}>
+            <View style={styles.todayMenuHeader}>
+              <Text style={styles.todayMenuTitle}>오늘의 메뉴</Text>
+            </View>
+            <TodayMenuCarousel />
+          </View>
+          {/* 모아보기 */}
+          <View style={styles.collectContainer}>
+            <TouchableOpacity
+              style={styles.collectButton}
+              onPress={onCafeCollectClick}
+            >
+              <Image
+                style={styles.collectImage}
+                source={require("../../../assets/icons/coffeeCupIcon.png")}
+              />
+              <Text style={styles.collectText}>카페 모아보기</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.collectButton}
+              onPress={onRestaurantCollectClick}
+            >
+              <Image
+                style={styles.collectImage}
+                source={require("../../../assets/icons/cutleryIcon.png")}
+              />
+              <Text style={styles.collectText}>식당 모아보기</Text>
             </TouchableOpacity>
           </View>
-          <ScrollView
-            style={styles.mostBody}
-            showsHorizontalScrollIndicator={false}
-            horizontal={true}
-          >
-            {stores.map((store, index) => (
-              <MostStoreCard key={index} store={store} />
-            ))}
-          </ScrollView>
-        </View>
-        {/* 가장 많이 주문한 메뉴 */}
-        <View style={styles.mostContainer}>
-          <View style={styles.mostHeader}>
-            <View style={styles.mostHeaderLeft}>
-              <Text style={styles.mostTitle}>{user.name} 님이</Text>
-              <Text style={styles.mostTitle}>가장 많이 주문한 메뉴에요!</Text>
+          {/* 가장 많이 이용한 매장 */}
+          <View style={styles.mostContainer}>
+            <View style={styles.mostHeader}>
+              <View style={styles.mostHeaderLeft}>
+                <Text style={styles.mostTitle}>{user.name} 님이</Text>
+                <Text style={styles.mostTitle}>
+                  가장 많이 이용한 매장이에요!
+                </Text>
+              </View>
+              <TouchableOpacity
+                style={styles.mostHeaderRight}
+                onPress={onMostStoreMoreClick}
+              >
+                <Text stlye={styles.moreText}>더보기</Text>
+                <Image
+                  source={require("../../../assets/icons/rightIcon.png")}
+                />
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.mostHeaderRight}>
-              <Text stlye={styles.moreText}>더보기</Text>
-              <Image source={require("../../../assets/icons/rightIcon.png")} />
-            </TouchableOpacity>
+            <ScrollView
+              style={styles.mostBody}
+              showsHorizontalScrollIndicator={false}
+              horizontal={true}
+            >
+              {stores.map((store, index) => (
+                <MostStoreCard key={index} store={store} />
+              ))}
+            </ScrollView>
           </View>
-          <ScrollView
-            style={styles.mostBody}
-            showsHorizontalScrollIndicator={false}
-            horizontal={true}
-          >
-            {menus.map((menu, index) => (
-              <MostMenuCard key={index} menu={menu} />
-            ))}
-          </ScrollView>
-        </View>
-        {/* 포인트 */}
-        <View style={styles.pointContainer}>
-          <View style={styles.pointHeader}>
-            <Text style={styles.pointHeaderTitle}>{user.name} 님의 포인트</Text>
+          {/* 가장 많이 주문한 메뉴 */}
+          <View style={styles.mostContainer}>
+            <View style={styles.mostHeader}>
+              <View style={styles.mostHeaderLeft}>
+                <Text style={styles.mostTitle}>{user.name} 님이</Text>
+                <Text style={styles.mostTitle}>가장 많이 주문한 메뉴에요!</Text>
+              </View>
+              <TouchableOpacity
+                style={styles.mostHeaderRight}
+                onPress={onMostMenuCMorelick}
+              >
+                <Text stlye={styles.moreText}>더보기</Text>
+                <Image
+                  source={require("../../../assets/icons/rightIcon.png")}
+                />
+              </TouchableOpacity>
+            </View>
+            <ScrollView
+              style={styles.mostBody}
+              showsHorizontalScrollIndicator={false}
+              horizontal={true}
+            >
+              {menus.map((menu, index) => (
+                <MostMenuCard key={index} menu={menu} />
+              ))}
+            </ScrollView>
           </View>
-          <View style={styles.pointBody}>
-            <View style={styles.pointBodyHeader}>
-              <Text style={styles.pointBodyTitle}>
-                {user.name} 님이 당장 사용할 수 있는 포인트를 확인하세요!
+          {/* 포인트 */}
+          <View style={styles.pointContainer}>
+            <View style={styles.pointHeader}>
+              <Text style={styles.pointHeaderTitle}>
+                {user.name} 님의 포인트
               </Text>
             </View>
-            <View style={styles.pointBodyBody}>
-              <View style={styles.pointBodyBodyUp}>
-                <Image
-                  style={styles.pointBodyBodyUpImage}
-                  source={require("../../../assets/icons/UsDollarCircledIcon.png")}
-                />
-                <Text style={styles.pointBodyBodyUpText}>{user.point}</Text>
-                <Text style={styles.pointBodyBodyUpTextSub}>원</Text>
+            <View style={styles.pointBody}>
+              <View style={styles.pointBodyHeader}>
+                <Text style={styles.pointBodyTitle}>
+                  {user.name} 님이 당장 사용할 수 있는 포인트를 확인하세요!
+                </Text>
               </View>
-              <View style={styles.pointBodyBodyDown}>
-                <TouchableOpacity style={styles.pointBodyBodyDownButton}>
-                  <Text style={styles.pointBodyBodyDownButtonText}>
-                    내 스탬프
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.pointBodyBodyDownButton}>
-                  <Text style={styles.pointBodyBodyDownButtonText}>
-                    내 포인트
-                  </Text>
-                </TouchableOpacity>
+              <View style={styles.pointBodyBody}>
+                <View style={styles.pointBodyBodyUp}>
+                  <Image
+                    style={styles.pointBodyBodyUpImage}
+                    source={require("../../../assets/icons/UsDollarCircledIcon.png")}
+                  />
+                  <Text style={styles.pointBodyBodyUpText}>{user.point}</Text>
+                  <Text style={styles.pointBodyBodyUpTextSub}>원</Text>
+                </View>
+                <View style={styles.pointBodyBodyDown}>
+                  <TouchableOpacity
+                    style={styles.pointBodyBodyDownButton}
+                    onPress={onMyStampClick}
+                  >
+                    <Text style={styles.pointBodyBodyDownButtonText}>
+                      내 스탬프
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.pointBodyBodyDownButton}
+                    onPress={onMyPointClick}
+                  >
+                    <Text style={styles.pointBodyBodyDownButtonText}>
+                      내 포인트
+                    </Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      )}
     </View>
   );
 };
@@ -240,7 +290,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: "#fff",
-    fontFamily: "Pretendard-Bold",
+    fontFamily: "Pretendard Bold",
   },
   bgImage: {
     width: "100%",
@@ -273,7 +323,7 @@ const styles = StyleSheet.create({
   quickOrderTitle: {
     fontSize: 20,
     fontWeight: "bold",
-    fontFamily: "Pretendard-Bold",
+    fontFamily: "Pretendard Bold",
   },
   quickOrderBody: {
     width: "100%",
@@ -303,7 +353,7 @@ const styles = StyleSheet.create({
   todayMenuTitle: {
     fontSize: 20,
     fontWeight: "bold",
-    fontFamily: "Pretendard-Bold",
+    fontFamily: "Pretendard Bold",
   },
   collectContainer: {
     width: 350,
@@ -360,7 +410,7 @@ const styles = StyleSheet.create({
   mostTitle: {
     fontSize: 20,
     fontWeight: "bold",
-    fontFamily: "Pretendard-Bold",
+    fontFamily: "Pretendard Bold",
     color: "#222222",
   },
   mostBody: {
@@ -384,7 +434,7 @@ const styles = StyleSheet.create({
   pointHeaderTitle: {
     fontSize: 20,
     fontWeight: "bold",
-    fontFamily: "Pretendard-Bold",
+    fontFamily: "Pretendard Bold",
     color: "#222222",
   },
   pointBody: {
@@ -410,7 +460,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#222222",
     fontWeight: "nomal",
-    fontFamily: "Pretendard-Regular",
+    fontFamily: "Pretendard Regular",
   },
   pointBodyBody: {
     width: "100%",
@@ -432,14 +482,14 @@ const styles = StyleSheet.create({
   pointBodyBodyUpText: {
     fontSize: 20,
     fontWeight: "bold",
-    fontFamily: "Pretendard-Bold",
+    fontFamily: "Pretendard Bold",
     color: "#222222",
     marginLeft: 8,
   },
   pointBodyBodyUpTextSub: {
     fontSize: 14,
     fontWeight: "bold",
-    fontFamily: "Pretendard-Bold",
+    fontFamily: "Pretendard Bold",
     color: "#222222",
     marginLeft: 4,
   },
@@ -461,7 +511,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   pointBodyBodyDownButtonText: {
-    fontFamily: "Pretendard-Regular",
+    fontFamily: "Pretendard Regular",
 
     fontSize: 14,
   },
