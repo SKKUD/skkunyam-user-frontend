@@ -1,7 +1,5 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
-import { AntDesign, Ionicons } from "@expo/vector-icons";
-import { StatusBar } from "expo-status-bar";
 import Constants from "expo-constants"; // Constants로 불러온다.
 // const leftArrow = require("../../assets/left-arrow.png");
 
@@ -31,7 +29,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     width: "100%",
-    paddingTop: Constants.statusBarHeight + 10,
+    paddingTop: Constants.statusBarHeight + 20,
     paddingBottom: 18,
     paddingHorizontal: 20,
   },

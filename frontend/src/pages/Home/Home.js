@@ -86,7 +86,9 @@ const Home = () => {
           <View style={styles.quickOrderHeader}>
             <Text style={styles.quickOrderTitle}>바로주문하기</Text>
           </View>
-          <View style={styles.quickOrderBody}></View>
+          <View style={styles.quickOrderBody}>
+            <Text>여기 바뀔 것 같아서 나중에 만들게요</Text>
+          </View>
         </View>
         {/* 오늘의 메뉴 */}
         <View style={styles.todayMenuContainer}>
@@ -394,6 +396,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 16,
     paddingBottom: 18,
+    elevation: 5, // 안드로이드에서 그림자 효과를 위한 속성
+    shadowColor: "#000", // iOS에서 그림자 색상을 지정
+    shadowOffset: { width: 0, height: 6 }, // iOS 그림자의 오프셋
+    shadowOpacity: 0.2, // iOS 그림자의 투명도
+    shadowRadius: 4, // iOS 그림자의 반경
   },
   pointBodyHeader: {
     width: "100%",
@@ -443,7 +450,6 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: "gray",
   },
   pointBodyBodyDownButton: {
     width: 150,
