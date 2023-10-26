@@ -1,10 +1,13 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { AntDesign, Ionicons } from '@expo/vector-icons'; 
+import { useNavigation } from '@react-navigation/native';
 
 const Header = ({title = "", icon, onIconClick}) => {
+    const navigation = useNavigation();
+
     const onBackClick = () => {
-        console.log("Back clicked");
+        navigation.goBack();
     }
 
     return (
