@@ -8,17 +8,20 @@ import BuildingStores from '../../components/CafeCollect/BuildingStores';
 import { stores, buildingCategories } from '../../dummy';
 
 const CafeHomeScreen = () => {
-    const buildingKeys = buildingCategories.map(category => Object.keys(category)[0]);
-    const [selectedCategory, setSelectedCategory] = useState(0);
-    const [selectedStores, setSelectedStores] = useState(buildingCategories[0][buildingKeys[0]]);
+  const buildingKeys = buildingCategories.map(
+    (category) => Object.keys(category)[0]
+  );
+  const [selectedCategory, setSelectedCategory] = useState(0);
+  const [selectedStores, setSelectedStores] = useState(
+    buildingCategories[0][buildingKeys[0]]
+  );
 
-    const handleCategoryClick = (categoryIndex) => {
-        setSelectedCategory(categoryIndex);
-        const selectedCategoryData = buildingCategories[categoryIndex];
-        const selectedCategoryName = Object.keys(selectedCategoryData)[0];
-        setSelectedStores(selectedCategoryData[selectedCategoryName]);
-    };
-    
+  const handleCategoryClick = (categoryIndex) => {
+    setSelectedCategory(categoryIndex);
+    const selectedCategoryData = buildingCategories[categoryIndex];
+    const selectedCategoryName = Object.keys(selectedCategoryData)[0];
+    setSelectedStores(selectedCategoryData[selectedCategoryName]);
+  };
 
     return (
         <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
