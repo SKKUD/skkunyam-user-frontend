@@ -37,7 +37,6 @@ const TodayMenuCarousel = () => {
 
   return (
     <ScrollView
-      decelerationRate={0}
       ref={scrollViewRef}
       horizontal
       pagingEnabled
