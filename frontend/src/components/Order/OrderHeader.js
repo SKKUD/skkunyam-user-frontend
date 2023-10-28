@@ -7,7 +7,6 @@ import {
   Platform,
 } from "react-native";
 import Constants from "expo-constants"; // Constants로 불러온다.
-// const leftArrow = require("../../assets/left-arrow.png");
 
 const OrderHeader = ({ onIconClick }) => {
   const onBackClick = () => {

@@ -74,7 +74,11 @@ const Home = () => {
       {/* 헤더 */}
       <HomeHeader />
       {isFont && (
-        <ScrollView>
+        <ScrollView
+          style={styles.body}
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+        >
           {/* 명/율 선택 */}
           <View style={styles.radioContainer}>
             <RadioButton
@@ -252,6 +256,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   radioContainer: {
     flexDirection: "row",
