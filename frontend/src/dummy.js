@@ -153,3 +153,9 @@ export const buildingCategories = [
         ]
     },
 ]
+
+export const images = [
+    { id: 1, source: { uri: 'https://picsum.photos/500/300?image=100' } },
+    { id: 2, source: { uri: 'https://picsum.photos/500/300?image=200' } },
+    { id: 3, source: { uri: 'https://picsum.photos/500/300?image=300' } },
+];
