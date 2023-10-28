@@ -12,7 +12,7 @@ import { orderList, orders } from "../../components/Order/dummy";
 import { useState } from "react";
 import OrderListCard from "../../components/Order/OrderListCard";
 
-const Order = () => {
+const Order = ({ navigation }) => {
   const [_orders, setOrders] = useState(orders);
   const [lastOrder, setLastOrder] = useState(orderList);
   const [startMonth, setStartMonth] = useState("2023년 9월");
