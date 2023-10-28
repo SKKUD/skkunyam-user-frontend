@@ -7,7 +7,7 @@ import BuildingCategory from '../../components/CafeCollect/BuildingCategory';
 import BuildingStores from '../../components/CafeCollect/BuildingStores';
 import { stores, buildingCategories } from '../../dummy';
 
-const CafeHomeScreen = () => {
+const CafeHomeScreen = ({ navigation }) => {
   const buildingKeys = buildingCategories.map(
     (category) => Object.keys(category)[0]
   );

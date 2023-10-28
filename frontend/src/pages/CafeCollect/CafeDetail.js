@@ -7,7 +7,7 @@ import PointBox from '../../components/CafeCollect/PointBox';
 import DetailTabs from '../../components/CafeCollect/DetailTabs';
 import CustomButton from '../../components/CafeCollect/CustomButton';
 
-const CafeDetail = () => {
+const CafeDetail = ({ navigation }) => {
     const route = useRoute();
     const { store } = route.params;
 
