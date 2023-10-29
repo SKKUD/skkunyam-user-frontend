@@ -1,12 +1,19 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const NearStore = ({ store }) => {
+    const navigation = useNavigation();
+
+    const handleCafeClick = () => {
+        navigation.navigate('CafeDetail', { store: store })
+    }
+
     return (
         <View style={styles.container}>
             <View style={{width: 56, aspectRatio: 1, backgroundColor: '#D9D9D9', borderRadius: 8, marginRight: 20}}></View>
-            <View>
+            <TouchableOpacity onPress={() => handleCafeClick()}>
                 <View style={styles.row}>
                     <Text style={{fontSize: 16, lineHeight: 22}}>{store.name}</Text>
                 </View>
@@ -18,7 +25,7 @@ const NearStore = ({ store }) => {
                     <MaterialCommunityIcons name="map-marker-radius" size={14} color="gray" />
                     <Text style={styles.infoText}>{store.distance}</Text>
                 </View>
-            </View>
+            </TouchableOpacity>
         </View>
     );
 }
