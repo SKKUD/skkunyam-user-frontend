@@ -1,3 +1,5 @@
+export const itemSortOrder = ["todayMenu", "MostStore", "MostMenu", "MyStamp"];
+
 export const menuItems = [
   {
     name: "베이컨 크림 파스타",

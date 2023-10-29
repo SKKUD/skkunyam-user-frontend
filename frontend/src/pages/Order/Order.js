@@ -66,6 +66,7 @@ const Order = () => {
             </View>
           </View>
         </View>
+        <View style={styles.footer}></View>
       </ScrollView>
     </View>
   );
@@ -152,6 +153,10 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: "#E9E9E9",
+  },
+  footer: {
+    height: 150,
+    width: "100%",
   },
 });
 

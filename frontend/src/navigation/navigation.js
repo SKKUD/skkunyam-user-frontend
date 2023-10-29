@@ -5,6 +5,7 @@ import Order from "../pages/Order/Order";
 import BottomNav from "../components/BottomNav.js";
 import CafeHomeScreen from "../pages/CafeCollect/CafeHome";
 import BookMark from "../pages/BookMark/BookMark";
+import My from "../pages/My/My";
 
 const Tab = createBottomTabNavigator();
 
@@ -37,11 +38,7 @@ const Navigation = () => {
         options={{ headerShown: false }}
         component={BookMark}
       />
-      <Tab.Screen
-        name="My"
-        options={{ headerShown: false }}
-        component={CafeHomeScreen}
-      />
+      <Tab.Screen name="My" options={{ headerShown: false }} component={My} />
     </Tab.Navigator>
   );
 };
