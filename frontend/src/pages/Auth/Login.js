@@ -40,6 +40,7 @@ const LoginScreen = ({ navigation }) => {
         <TouchableOpacity
           style={[styles.button, styles.google]}
           onPress={() => navigation.navigate("Main")}
+        >
           <Text style={[styles.buttonText, styles.googleText]}>
             구글 로그인
           </Text>
