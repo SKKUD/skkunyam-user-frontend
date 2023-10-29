@@ -103,7 +103,9 @@ const My = ({ navigation }) => {
           <TouchableOpacity
             style={styles.bodyItem}
             activeOpacity={1}
-            onPress={() => {}}
+            onPress={() => {
+              navigation.navigate("EditNotification");
+            }}
           >
             <Text style={styles.itemText}>알림 설정</Text>
             <Image
