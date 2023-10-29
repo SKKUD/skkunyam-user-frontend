@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import MyHeader from "../../components/My/MyHeader";
 import { useEffect, useState } from "react";
-import Toggle from "../../components/My/Toggle";
+import ToggleSwitch from "toggle-switch-react-native";
 
 const initialState = [
   { text: "주문 현황 알림", state: true },
@@ -37,7 +37,12 @@ const EditNotification = () => {
             <Text style={styles.bodyItemText} key={index}>
               {item.text}
             </Text>
-            <Toggle state={item.state} onToggle={() => onToggle(index)} />
+            <ToggleSwitch
+              onToggle={() => onToggle(index)}
+              isOn={item.state}
+              offColor={"#E6E5E5"}
+              onColor={"#FFCD4D"}
+            />
           </View>
         ))}
       </View>
