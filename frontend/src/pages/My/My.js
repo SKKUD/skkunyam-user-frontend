@@ -10,6 +10,7 @@ import {
   View,
 } from "react-native";
 import Constants from "expo-constants";
+import { StatusBar } from "expo-status-bar";
 
 const My = ({ navigation }) => {
   user = {
@@ -19,26 +20,27 @@ const My = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>마이페이지</Text>
-      </View>
+      <View style={styles.statusbar} />
       <ScrollView
         style={styles.body}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 150 }}
       >
-        <View style={styles.headerUserInfo}>
-          <View style={styles.userInfoLeft}>
-            <Image source={user.avatar} style={styles.userAvatar} />
-            <Text style={styles.userName}>{user.name}</Text>
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>마이페이지</Text>
+          <View style={styles.headerUserInfo}>
+            <View style={styles.userInfoLeft}>
+              <Image source={user.avatar} style={styles.userAvatar} />
+              <Text style={styles.userName}>{user.name}</Text>
+            </View>
+            <TouchableOpacity style={styles.userInfoRight}>
+              <Text style={styles.edit}>수정하기</Text>
+              <Image
+                style={styles.headerRightArrow}
+                source={require("../../../assets/icons/rightIcon2.png")}
+              />
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.userInfoRight}>
-            <Text style={styles.edit}>수정하기</Text>
-            <Image
-              style={styles.headerRightArrow}
-              source={require("../../../assets/icons/rightIcon2.png")}
-            />
-          </TouchableOpacity>
         </View>
         <View style={styles.gap} />
         <View style={styles.bodyGroup}>
@@ -159,6 +161,10 @@ const My = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  statusbar: {
+    width: Dimensions.get("window").width,
+    height: Constants.statusBarHeight,
+  },
   container: {
     flex: 1,
     backgroundColor: "#fff",
@@ -167,12 +173,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   header: {
-    marginTop:
-      24 + (Constants.statusBarHeight + Platform.OS === "ios" ? 10 : 40),
+    marginTop: 24 + (Platform.OS === "ios" ? 10 : 40),
     width: 350,
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
+    marginHorizontal: (Dimensions.get("window").width - 350) / 2,
   },
   headerTitle: {
     fontSize: 24,
@@ -187,7 +193,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     marginBottom: 20,
-    paddingHorizontal: 20,
   },
   userInfoLeft: {
     display: "flex",
