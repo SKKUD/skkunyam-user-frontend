@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import ToggleSwitch from "toggle-switch-react-native";
 
 const initialState = [
-  { text: "주문 현황 알림", state: true },
-  { text: "이벤트 알림", state: true },
-  { text: "매장 · 식당 소식", state: true },
+  { text: "주문 현황 알림", state: true, key: 1 },
+  { text: "이벤트 알림", state: true, key: 2 },
+  { text: "매장 · 식당 소식", state: true, key: 3 },
 ];
 
 const EditNotification = () => {
@@ -34,7 +34,7 @@ const EditNotification = () => {
         </View>
         {bodyItems.map((item, index) => (
           <View style={styles.bodyItem}>
-            <Text style={styles.bodyItemText} key={index}>
+            <Text style={styles.bodyItemText} key={item.key}>
               {item.text}
             </Text>
             <ToggleSwitch

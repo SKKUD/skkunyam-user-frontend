@@ -72,7 +72,9 @@ const My = ({ navigation }) => {
           <TouchableOpacity
             style={styles.bodyItem}
             activeOpacity={1}
-            onPress={() => {}}
+            onPress={() => {
+              navigation.navigate("MyStamp");
+            }}
           >
             <Text style={styles.itemText}>내 스탬프</Text>
             <Image
