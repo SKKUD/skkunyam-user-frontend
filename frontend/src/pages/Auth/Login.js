@@ -33,13 +33,13 @@ const LoginScreen = ({ navigation }) => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={[styles.button, styles.kakao]}
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.navigate("Main")}
         >
           <Text style={styles.buttonText}>카카오 로그인</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.button, styles.google]}
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.navigate("Main")}
         >
           <Text style={[styles.buttonText, styles.googleText]}>
             구글 로그인
@@ -47,7 +47,7 @@ const LoginScreen = ({ navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.button, styles.apple]}
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.navigate("Main")}
         >
           <Text style={styles.buttonText}>애플계정 로그인</Text>
         </TouchableOpacity>
