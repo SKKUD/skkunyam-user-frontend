@@ -13,7 +13,7 @@ const AnnouncementDetail = ({ route }) => {
   return (
     <View style={styles.container}>
       <MyHeader title={"공지사항 · 이벤트"} />
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.body}>
           <View style={styles.bodyHeader}>
             <Text style={styles.bodyTitle}>{article?.title}</Text>

@@ -98,6 +98,7 @@ const My = ({ navigation }) => {
             />
           </TouchableOpacity>
         </View>
+        <View style={styles.gap} />
         <View style={styles.bodyGroup}>
           {/* 알림 설정 */}
           <TouchableOpacity
@@ -122,6 +123,20 @@ const My = ({ navigation }) => {
             }}
           >
             <Text style={styles.itemText}>공지사항 · 이벤트</Text>
+            <Image
+              style={styles.bodyRightArrow}
+              source={require("../../../assets/icons/rightIcon2.png")}
+            />
+          </TouchableOpacity>
+          {/* 자주 묻는 질문 */}
+          <TouchableOpacity
+            style={styles.bodyItem}
+            activeOpacity={1}
+            onPress={() => {
+              navigation.navigate("FrequentlyAskedQuestions");
+            }}
+          >
+            <Text style={styles.itemText}>자주 묻는 질문</Text>
             <Image
               style={styles.bodyRightArrow}
               source={require("../../../assets/icons/rightIcon2.png")}

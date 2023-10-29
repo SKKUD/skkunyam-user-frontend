@@ -9,6 +9,7 @@ import EditHome from "./src/pages/My/EditHome";
 import EditNotification from "./src/pages/My/EditNotification";
 import Announcement from "./src/pages/My/Announcement";
 import AnnouncementDetail from "./src/pages/My/AnnouncementDetail";
+import FrequentQuestion from "./src/pages/My/FrequentQuestion";
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -55,6 +56,11 @@ const App = () => {
           name="AnnouncementDetail"
           options={{ headerShown: false }}
           component={AnnouncementDetail}
+        />
+        <Stack.Screen
+          name="FrequentlyAskedQuestions"
+          options={{ headerShown: false }}
+          component={FrequentQuestion}
         />
       </Stack.Navigator>
     </NavigationContainer>
