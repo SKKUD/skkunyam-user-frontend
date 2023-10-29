@@ -6,6 +6,7 @@ import LoginScreen from "./src/pages/Auth/Login";
 import CafeHomeScreen from "./src/pages/CafeCollect/CafeHome";
 import Home from "./src/pages/Home/Home";
 import Order from "./src/pages/Order/Order";
+import BookMark from "./src/pages/BookMark/BookMark";
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -13,6 +14,11 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="BookMarkScreen"
+          options={{ headerShown: false }}
+          component={BookMark}
+        />
         <Stack.Screen
           name="OrderScreen"
           options={{ headerShown: false }}
