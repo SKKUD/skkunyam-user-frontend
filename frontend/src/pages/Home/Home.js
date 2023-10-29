@@ -17,7 +17,7 @@ import { itemSortOrder, menus, stores } from "../../components/Home/dummy";
 import MostStoreCard from "../../components/Home/MostStoreCard";
 import MostMenuCard from "../../components/Home/MostMenuCard";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   // 폰트 불러오기
   const [isFont, setIsFont] = useState(false);
   useEffect(() => {
@@ -50,6 +50,7 @@ const Home = () => {
 
   const onCafeCollectClick = () => {
     console.log("카페 모아보기 clicked");
+    navigation.navigate("CafeHome");
   };
   const onRestaurantCollectClick = () => {
     console.log("식당 모아보기 clicked");

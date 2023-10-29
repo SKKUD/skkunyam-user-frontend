@@ -40,11 +40,7 @@ const BottomNav = ({ state, navigation }) => {
         <View style={styles.orderButton}>
           <TouchableOpacity onPress={() => handlePress(2)}>
             <Image source={orderIcon} />
-            <Text
-              style={{ ...styles.label, fontWeight: "bold", color: "#725827" }}
-            >
-              ORDER
-            </Text>
+            <Text style={{...styles.label, fontWeight: 'bold', color: '#725827'}}>ORDER</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -84,34 +80,34 @@ const styles = StyleSheet.create({
   },
   tabContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   label: {
     fontSize: 10,
-    color: "#666666",
-    textAlign: "center",
+    color: '#666666',
+    textAlign: 'center',
     marginTop: 3,
   },
   orderButtonContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   orderButton: {
-    backgroundColor: "#FFE769",
+    backgroundColor: '#FFE769',
     width: 82,
     height: 82,
     borderRadius: 41,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: 20,
   },
-  //   activeTab: {
-  //     backgroundColor: '#62b5f7',
-  //     borderRadius: 20,
-  //     padding: 5,
-  //   },
+//   activeTab: {
+//     backgroundColor: '#62b5f7',
+//     borderRadius: 20,
+//     padding: 5,
+//   },
 });
 
 export default BottomNav;
