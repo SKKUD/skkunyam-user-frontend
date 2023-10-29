@@ -6,6 +6,7 @@ import BottomNav from "../components/BottomNav.js";
 import CafeHomeScreen from "../pages/CafeCollect/CafeHome";
 import BookMark from "../pages/BookMark/BookMark";
 
+
 const Tab = createBottomTabNavigator();
 
 const Navigation = () => {
