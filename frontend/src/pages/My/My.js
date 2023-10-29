@@ -117,7 +117,9 @@ const My = ({ navigation }) => {
           <TouchableOpacity
             style={styles.bodyItem}
             activeOpacity={1}
-            onPress={() => {}}
+            onPress={() => {
+              navigation.navigate("Announcement");
+            }}
           >
             <Text style={styles.itemText}>공지사항 · 이벤트</Text>
             <Image

@@ -7,6 +7,8 @@ import CafeDetailScreen from "./src/pages/CafeCollect/CafeDetail";
 import Navigation from "./src/navigation/navigation";
 import EditHome from "./src/pages/My/EditHome";
 import EditNotification from "./src/pages/My/EditNotification";
+import Announcement from "./src/pages/My/Announcement";
+import AnnouncementDetail from "./src/pages/My/AnnouncementDetail";
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -43,6 +45,16 @@ const App = () => {
           name="EditNotification"
           options={{ headerShown: false }}
           component={EditNotification}
+        />
+        <Stack.Screen
+          name="Announcement"
+          options={{ headerShown: false }}
+          component={Announcement}
+        />
+        <Stack.Screen
+          name="AnnouncementDetail"
+          options={{ headerShown: false }}
+          component={AnnouncementDetail}
         />
       </Stack.Navigator>
     </NavigationContainer>
