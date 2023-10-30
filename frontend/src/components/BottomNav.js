@@ -1,15 +1,15 @@
-import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Image, Text } from 'react-native';
-import homeIcon from '../images/nav/nav_home.png';
-import stampIcon from '../images/nav/nav_stamp.png';
-import orderIcon from '../images/nav/nav_order.png';
-import bookmarkIcon from '../images/nav/nav_bookmark.png';
-import myIcon from '../images/nav/nav_my.png';
+import React from "react";
+import { View, StyleSheet, TouchableOpacity, Image, Text } from "react-native";
+import homeIcon from "../images/nav/nav_home.png";
+import stampIcon from "../images/nav/nav_stamp.png";
+import orderIcon from "../images/nav/nav_order.png";
+import bookmarkIcon from "../images/nav/nav_bookmark.png";
+import myIcon from "../images/nav/nav_my.png";
 
 const BottomNav = ({ state, navigation }) => {
   const handlePress = (index) => {
     const event = navigation.emit({
-      type: 'tabPress',
+      type: "tabPress",
       target: state.routes[index].key,
     });
 
@@ -66,11 +66,11 @@ const BottomNav = ({ state, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     height: 95,
-    backgroundColor: '#fff',
-    position: 'absolute',
+    backgroundColor: "#fff",
+    position: "absolute",
     paddingBottom: 25,
     paddingHorizontal: 15,
     bottom: 0,

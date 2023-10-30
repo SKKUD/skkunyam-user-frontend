@@ -5,6 +5,12 @@ import LoginScreen from "./src/pages/Auth/Login";
 import CafeHomeScreen from "./src/pages/CafeCollect/CafeHome";
 import CafeDetailScreen from "./src/pages/CafeCollect/CafeDetail";
 import Navigation from "./src/navigation/navigation";
+import EditHome from "./src/pages/My/EditHome";
+import EditNotification from "./src/pages/My/EditNotification";
+import Announcement from "./src/pages/My/Announcement";
+import AnnouncementDetail from "./src/pages/My/AnnouncementDetail";
+import FrequentQuestion from "./src/pages/My/FrequentQuestion";
+import MyStamp from "./src/pages/My/MyStamp";
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -31,6 +37,36 @@ const App = () => {
           name="CafeDetail"
           options={{ headerShown: false }}
           component={CafeDetailScreen}
+        />
+        <Stack.Screen
+          name="EditHome"
+          options={{ headerShown: false }}
+          component={EditHome}
+        />
+        <Stack.Screen
+          name="EditNotification"
+          options={{ headerShown: false }}
+          component={EditNotification}
+        />
+        <Stack.Screen
+          name="Announcement"
+          options={{ headerShown: false }}
+          component={Announcement}
+        />
+        <Stack.Screen
+          name="AnnouncementDetail"
+          options={{ headerShown: false }}
+          component={AnnouncementDetail}
+        />
+        <Stack.Screen
+          name="FrequentlyAskedQuestions"
+          options={{ headerShown: false }}
+          component={FrequentQuestion}
+        />
+        <Stack.Screen
+          name="MyStamp"
+          options={{ headerShown: false }}
+          component={MyStamp}
         />
       </Stack.Navigator>
     </NavigationContainer>
