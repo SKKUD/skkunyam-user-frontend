@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef} from 'react';
 import { Text, StyleSheet, View, ScrollView, TouchableOpacity, Dimensions, Image } from 'react-native';
 import Header from '../../components/CafeCollect/Header';
 import { useRoute } from '@react-navigation/native';
 import { images } from '../../dummy';
 
-const CafeMenuList = () => {
+const CafeMenuList = ({ navigation }) => {
     const route = useRoute();
     const { store } = route.params;
 
@@ -59,6 +59,10 @@ const CafeMenuList = () => {
         }
     };
 
+    const handleItemClick = (item) => {
+        navigation.navigate('CafeMenuSelect', { item });
+    }
+
     return (
         <View style={styles.container}>
             <Header title={store.name} icon="search" />
@@ -85,7 +89,7 @@ const CafeMenuList = () => {
                     <View key={category}>
                     <Text style={styles.subheading}>{category}</Text>
                     {menuItems[category].map((item, itemIndex) => (
-                        <TouchableOpacity key={itemIndex} style={styles.menuItem}>
+                        <TouchableOpacity key={itemIndex} style={styles.menuItem} onPress={() => handleItemClick(item)}>
                             <View>
                                 <View style={{flexDirection: 'row', alignItems: 'center', paddingBottom: 4}}>
                                     <Text style={styles.itemText}>{item}</Text>
