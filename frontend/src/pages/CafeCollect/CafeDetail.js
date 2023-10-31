@@ -13,9 +13,13 @@ const CafeDetail = ({ navigation }) => {
 
     const height = Dimensions.get('window').height;
 
+    const handleButtonClick = () => {
+        navigation.navigate('CafeMenuList', { store });
+    }
+
     return (
         <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
-            <Header icon="star-outline" />
+            <Header icon="heart" />
             <View style={{height: height*0.3}}>
                 <ImageContainers />
             </View>
@@ -32,8 +36,8 @@ const CafeDetail = ({ navigation }) => {
             <PointBox point={'1,200'}/>
             <DetailTabs />
             <View style={styles.buttonContainer}>
-                <CustomButton title="먹고 갈게요" width={'48%'}/>
-                <CustomButton title="포장 할게요" width={'48%'} />
+                <CustomButton title="먹고 갈게요" width={'48%'} onPress={handleButtonClick}/>
+                <CustomButton title="포장 할게요" width={'48%'} onPress={handleButtonClick}/>
             </View>
         </ScrollView>
     );

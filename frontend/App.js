@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "./src/pages/Auth/Login";
 import CafeHomeScreen from "./src/pages/CafeCollect/CafeHome";
 import CafeDetailScreen from "./src/pages/CafeCollect/CafeDetail";
+import CafeMenuListScreen from "./src/pages/CafeCollect/CafeMenuList";
 import Navigation from "./src/navigation/navigation";
 import EditHome from "./src/pages/My/EditHome";
 import EditNotification from "./src/pages/My/EditNotification";
@@ -37,6 +38,11 @@ const App = () => {
           name="CafeDetail"
           options={{ headerShown: false }}
           component={CafeDetailScreen}
+        />
+        <Stack.Screen
+          name="CafeMenuList"
+          options={{ headerShown: false }}
+          component={CafeMenuListScreen}
         />
         <Stack.Screen
           name="EditHome"

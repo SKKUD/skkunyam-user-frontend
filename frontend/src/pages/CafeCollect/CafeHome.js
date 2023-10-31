@@ -25,7 +25,7 @@ const CafeHomeScreen = ({ navigation }) => {
 
     return (
         <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
-            <Header icon="md-map-outline"/>
+            <Header icon="map"/>
             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text style={styles.boldText}>카페 모아보기</Text>
                 <Text>토글</Text>
@@ -39,7 +39,6 @@ const CafeHomeScreen = ({ navigation }) => {
                 onCategoryClick={handleCategoryClick}
             />
             <BuildingStores stores={selectedStores}/>
-
         </ScrollView>
     )
 }
