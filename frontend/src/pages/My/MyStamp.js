@@ -12,7 +12,11 @@ const MyStamp = () => {
     for (let j = 0; j < 4; j++) {
       tmp.push(<View style={styles.stamp} key={i * 4 + j}></View>);
     }
-    stampRendered.push(<View style={styles.stampRow}>{tmp}</View>);
+    stampRendered.push(
+      <View style={styles.stampRow} key={i}>
+        {tmp}
+      </View>
+    );
   }
 
   return (
@@ -47,13 +51,13 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#222222",
   },
   subtitle: {
     marginTop: 8,
     fontSize: 16,
-    fontWeight: "normal",
+    fontFamily: "Pretendard SemiBold",
     color: "#8B8B8B",
   },
   stampBoard: {

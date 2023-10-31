@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   header: {
-    marginTop: 24 + (Platform.OS === "ios" ? 10 : 40),
+    marginTop: 24,
     width: 350,
     display: "flex",
     flexDirection: "column",
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#000000",
   },
   headerUserInfo: {
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
   },
   userName: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontFamily: "Pretendard SemiBold",
     marginLeft: 12,
   },
   userInfoRight: {
@@ -236,11 +236,13 @@ const styles = StyleSheet.create({
   },
   edit: {
     color: "#8B8B8B",
+    fontFamily: "Pretendard Medium",
     fontSize: 12,
   },
   headerRightArrow: {
-    width: 19,
-    height: 19,
+    marginLeft: 8,
+    width: 12,
+    height: 20,
   },
   body: {
     width: Dimensions.get("window").width,
@@ -260,12 +262,12 @@ const styles = StyleSheet.create({
   },
   itemText: {
     fontSize: 18,
-    fontWeight: "medium",
+    fontFamily: "Pretendard Medium",
     color: "#4E4E4E",
   },
   bodyRightArrow: {
-    width: 8,
-    height: 14,
+    width: 16,
+    height: 28,
   },
 });
 

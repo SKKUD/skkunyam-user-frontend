@@ -99,12 +99,13 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#222222",
   },
   headerSubtitle: {
     marginTop: 8,
     fontSize: 16,
+    fontFamily: "Pretendard SemiBold",
     lineHeight: 18,
     color: "#9C9C9C",
   },

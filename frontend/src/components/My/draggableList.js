@@ -29,7 +29,7 @@ const DraggableList = ({ setShown, shown, onShownPress }) => {
               />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => onShownPress(item)}>
-              <Text style={styles.ItemSubText}>숨기기</Text>
+              <Text style={styles.ItemSubText}>숨김</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -74,10 +74,11 @@ const styles = StyleSheet.create({
   },
   ItemText: {
     fontSize: 18,
+    fontFamily: "Pretendard Medium",
     color: "#4E4E4E",
   },
   ItemRight: {
-    width: 80,
+    width: 70,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -89,6 +90,7 @@ const styles = StyleSheet.create({
   },
   ItemSubText: {
     fontSize: 16,
+    fontFamily: "Pretendard Medium",
     color: "#9D9D9D",
   },
 });

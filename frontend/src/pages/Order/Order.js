@@ -92,13 +92,13 @@ const styles = StyleSheet.create({
   },
   orderListHeaderTitle: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#222222",
   },
   orderListHeaderSubtitle: {
-    fontSize: 14,
-    fontWeight: "normal",
-    color: "#8B8B8B",
+    fontSize: 16,
+    fontFamily: "Pretendard SemiBold",
+    color: "#9C9C9C",
     marginTop: 8,
   },
   orderListBody: {
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   },
   bodyHeaderTitle: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#222222",
   },
   bodyHeaderDate: {
@@ -138,12 +138,12 @@ const styles = StyleSheet.create({
   },
   bodyHeaderDateItemText: {
     fontSize: 14,
-    fontWeight: "medium",
+    fontFamily: "Pretendard Regular",
     color: "#555555",
   },
   bodyHeaderDateText: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#555555",
   },
   bodyContent: {

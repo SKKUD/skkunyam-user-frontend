@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
   restaurant: {
     fontSize: 12,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#555555",
   },
   body: {
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   menuName: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "Pretendard SemiBold",
     color: "#ffffff",
   },
 });

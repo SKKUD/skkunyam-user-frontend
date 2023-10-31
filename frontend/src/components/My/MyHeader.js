@@ -37,7 +37,7 @@ const MyHeader = ({ title }) => {
 const styles = StyleSheet.create({
   container: {
     width: Dimensions.get("window").width,
-    marginTop: Constants.statusBarHeight + (Platform.OS === "ios" ? 10 : 40),
+    marginTop: Constants.statusBarHeight,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#222222",
   },
 });

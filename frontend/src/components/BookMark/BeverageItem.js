@@ -51,13 +51,13 @@ const styles = StyleSheet.create({
   },
   detailTitle: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "Pretendard SemiBold",
     color: "#000000",
+    marginBottom: 2,
   },
   detailItem: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 4,
   },
   detailIcon: {
     width: 16,
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
   detailSubTitle: {
     fontSize: 12,
     color: "#8B8B8B",
+    fontFamily: "Pretendard Regular",
   },
   right: {
     display: "flex",

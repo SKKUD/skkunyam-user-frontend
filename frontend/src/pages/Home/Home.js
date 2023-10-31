@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import HomeHeader from "../../components/Home/HomeHeader";
 import RadioButton from "../../components/Home/RadioButton";
-import * as Font from "expo-font";
 import TodayMenuCarousel from "../../components/Home/TodayMenuCarousel";
 
 import { itemSortOrder, menus, stores } from "../../components/Home/dummy";
@@ -18,20 +17,6 @@ import MostStoreCard from "../../components/Home/MostStoreCard";
 import MostMenuCard from "../../components/Home/MostMenuCard";
 
 const Home = ({ navigation }) => {
-  // 폰트 불러오기
-  const [isFont, setIsFont] = useState(false);
-  useEffect(() => {
-    const loadFont = async () => {
-      await Font.loadAsync({
-        "Rubik Mono One": require("../../../fonts/RubikMonoOne-Regular.ttf"),
-        "Pretendard Bold": require("../../../fonts/Pretendard-Bold.otf"),
-        "Pretendard Regular": require("../../../fonts/Pretendard-Regular.otf"),
-      });
-      setIsFont(true);
-    };
-    loadFont();
-  }, []);
-
   const user = {
     name: "스꾸디",
     point: "7,860",
@@ -115,8 +100,10 @@ const Home = ({ navigation }) => {
             style={styles.mostHeaderRight}
             onPress={onMostStoreMoreClick}
           >
-            <Text stlye={styles.moreText}>더보기</Text>
-            <Image source={require("../../../assets/icons/rightIcon.png")} />
+            <View style={styles.moreWrapper}>
+              <Text stlye={styles.moreText}>더보기</Text>
+              <Image source={require("../../../assets/icons/rightIcon.png")} />
+            </View>
           </TouchableOpacity>
         </View>
         <ScrollView
@@ -141,8 +128,10 @@ const Home = ({ navigation }) => {
             style={styles.mostHeaderRight}
             onPress={onMostMenuCMorelick}
           >
-            <Text stlye={styles.moreText}>더보기</Text>
-            <Image source={require("../../../assets/icons/rightIcon.png")} />
+            <View style={styles.moreWrapper}>
+              <Text stlye={styles.moreText}>더보기</Text>
+              <Image source={require("../../../assets/icons/rightIcon.png")} />
+            </View>
           </TouchableOpacity>
         </View>
         <ScrollView
@@ -210,55 +199,52 @@ const Home = ({ navigation }) => {
     <View style={styles.container}>
       {/* 헤더 */}
       <HomeHeader />
-      {isFont && (
-        <ScrollView
-          style={styles.body}
-          showsVerticalScrollIndicator={false}
-          showsHorizontalScrollIndicator={false}
-        >
-          {/* 명/율 선택 */}
-          <View style={styles.radioContainer}>
-            <RadioButton
-              label="명륜"
-              checked={isMyeongryun}
-              onPressed={onMyeongryunClick}
-            />
-            <RadioButton
-              label="율전"
-              checked={!isMyeongryun}
-              onPressed={onYuljeonClick}
-            />
-          </View>
-          {/* 홍보? */}
-
-          <View style={styles.festaContainer}>
-            <ImageBackground
-              style={styles.bgImage}
-              source={require("../../../assets/festaImage.png")}
-              imageStyle={{ borderRadius: 8 }}
-            >
-              <View style={styles.festaTextContainer}>
-                <Text style={styles.festaText}>2024 ESKARA</Text>
-                <Text style={styles._festaText}>
-                  성균인이라면! 축제도 꾸냠이와 함께~!
-                </Text>
-              </View>
-            </ImageBackground>
-          </View>
-          {/* 바로주문하기 */}
-          <View style={styles.quickOrderContainer}>
-            <View style={styles.quickOrderHeader}>
-              <Text style={styles.quickOrderTitle}>바로주문하기</Text>
+      <ScrollView
+        style={styles.body}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+      >
+        {/* 명/율 선택 */}
+        <View style={styles.radioContainer}>
+          <RadioButton
+            label="명륜"
+            checked={isMyeongryun}
+            onPressed={onMyeongryunClick}
+          />
+          <RadioButton
+            label="율전"
+            checked={!isMyeongryun}
+            onPressed={onYuljeonClick}
+          />
+        </View>
+        {/* 홍보? */}
+        <View style={styles.festaContainer}>
+          <ImageBackground
+            style={styles.bgImage}
+            source={require("../../../assets/festaImage.png")}
+            imageStyle={{ borderRadius: 8 }}
+          >
+            <View style={styles.festaTextContainer}>
+              <Text style={styles.festaText}>2024 ESKARA</Text>
+              <Text style={styles._festaText}>
+                성균인이라면! 축제도 꾸냠이와 함께~!
+              </Text>
             </View>
-            <View style={styles.quickOrderBody}>
-              <Text>여기 바뀔 것 같아서 나중에 만들게요</Text>
-            </View>
+          </ImageBackground>
+        </View>
+        {/* 바로주문하기 */}
+        <View style={styles.quickOrderContainer}>
+          <View style={styles.quickOrderHeader}>
+            <Text style={styles.quickOrderTitle}>바로주문하기</Text>
           </View>
-          {render.map((item, index) => (
-            <View key={index}>{item}</View>
-          ))}
-        </ScrollView>
-      )}
+          <View style={styles.quickOrderBody}>
+            <Text>여기 바뀔 것 같아서 나중에 만들게요</Text>
+          </View>
+        </View>
+        {render.map((item, index) => (
+          <View key={index}>{item}</View>
+        ))}
+      </ScrollView>
     </View>
   );
 };
@@ -301,13 +287,11 @@ const styles = StyleSheet.create({
   },
   festaText: {
     fontSize: 20,
-    fontWeight: "normal",
     color: "#fff",
     fontFamily: "Rubik Mono One",
   },
   _festaText: {
     fontSize: 16,
-    fontWeight: "bold",
     color: "#fff",
     fontFamily: "Pretendard Bold",
   },
@@ -341,13 +325,11 @@ const styles = StyleSheet.create({
   },
   quickOrderTitle: {
     fontSize: 20,
-    fontWeight: "bold",
     fontFamily: "Pretendard Bold",
   },
   quickOrderBody: {
     width: "100%",
     height: 80,
-
     backgroundColor: "#BBBBBB",
   },
   todayMenuContainer: {
@@ -371,7 +353,6 @@ const styles = StyleSheet.create({
   },
   todayMenuTitle: {
     fontSize: 20,
-    fontWeight: "bold",
     fontFamily: "Pretendard Bold",
   },
   collectContainer: {
@@ -379,7 +360,6 @@ const styles = StyleSheet.create({
     height: 50,
     marginHorizontal: 20,
     marginTop: 24,
-
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -403,6 +383,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginLeft: 8,
     textAlign: "center",
+    fontFamily: "Pretendard Regular",
   },
   mostContainer: {
     marginHorizontal: 20,
@@ -426,9 +407,18 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     justifyContent: "flex-end",
   },
+  moreWrapper: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  moreText: {
+    fontSize: 14,
+    fontFamily: "Pretendard Thin",
+  },
   mostTitle: {
     fontSize: 20,
-    fontWeight: "bold",
     fontFamily: "Pretendard Bold",
     color: "#222222",
   },
@@ -452,7 +442,6 @@ const styles = StyleSheet.create({
   },
   pointHeaderTitle: {
     fontSize: 20,
-    fontWeight: "bold",
     fontFamily: "Pretendard Bold",
     color: "#222222",
   },
@@ -478,7 +467,6 @@ const styles = StyleSheet.create({
   pointBodyTitle: {
     fontSize: 14,
     color: "#222222",
-    fontWeight: "nomal",
     fontFamily: "Pretendard Regular",
   },
   pointBodyBody: {
@@ -500,14 +488,12 @@ const styles = StyleSheet.create({
   },
   pointBodyBodyUpText: {
     fontSize: 20,
-    fontWeight: "bold",
     fontFamily: "Pretendard Bold",
     color: "#222222",
     marginLeft: 8,
   },
   pointBodyBodyUpTextSub: {
     fontSize: 14,
-    fontWeight: "bold",
     fontFamily: "Pretendard Bold",
     color: "#222222",
     marginLeft: 4,
@@ -531,7 +517,6 @@ const styles = StyleSheet.create({
   },
   pointBodyBodyDownButtonText: {
     fontFamily: "Pretendard Regular",
-
     fontSize: 14,
   },
 });
