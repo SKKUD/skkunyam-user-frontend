@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
-import { AntDesign, Ionicons } from '@expo/vector-icons'; 
+import { AntDesign, Ionicons, Feather } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
 
 const Header = ({title = "", icon, onIconClick}) => {
@@ -15,9 +15,9 @@ const Header = ({title = "", icon, onIconClick}) => {
             <TouchableOpacity onPress={onBackClick}>
                 <AntDesign name="left" size={24} color="black" />
             </TouchableOpacity>
-            <Text>{title}</Text>
+            <Text style={styles.title}>{title}</Text>
             <TouchableOpacity onPress={onIconClick}>
-                <Ionicons name={icon} size={24} color="black" />
+                <Feather name={icon} size={24} color="black" />
             </TouchableOpacity>
         </View>
     )
@@ -30,6 +30,10 @@ const styles = StyleSheet.create({
         width: '100%',
         paddingVertical: 24,
     },
+    title: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    }
 });
 
 export default Header;
