@@ -23,16 +23,39 @@ const CafeMenuList = () => {
 
     const handleCategoryChange = (category) => {
         setSelectedCategory(category);
-        const categoryIndex = categories.indexOf(category);
-        scrollViewRef.current.scrollTo({ x: 0, y: categoryIndex * 300, animated: true }); 
+        const yOffset = calculateScrollPosition(category);
+        scrollViewRef.current.scrollTo({ y: yOffset, animated: true });
     };
 
-    const handleScrollEnd = (event) => {
-        const offsetY = event.nativeEvent.contentOffset.y;
-        const categoryIndex = Math.floor(offsetY / 300);
-        const newCategory = categories[categoryIndex];
-        if (newCategory !== selectedCategory) {
-            setSelectedCategory(newCategory);
+    const calculateScrollPosition = (category) => {
+        let yOffset = 0;
+        for (const cat of categories) {
+            if (cat === category) {
+                break;
+            }
+            yOffset += menuItems[cat].length * 100; 
+            yOffset += 48; 
+        }
+        return yOffset;
+    };
+
+    const handleScroll = (event) => {
+        const contentOffsetY = event.nativeEvent.contentOffset.y;
+
+        let foundCategory = false;
+        for (const category of categories) {
+            const yOffset = calculateScrollPosition(category);
+            const categoryHeight = 48 + menuItems[category].length * 100;
+            
+            if (contentOffsetY >= yOffset && contentOffsetY < yOffset + categoryHeight) {
+                setSelectedCategory(category);
+                foundCategory = true;
+                break;
+            }
+        }
+
+        if (!foundCategory) {
+            setSelectedCategory(contentOffsetY < calculateScrollPosition(categories[0]) ? categories[0] : categories[categories.length - 1]);
         }
     };
 
@@ -47,24 +70,32 @@ const CafeMenuList = () => {
                         style={styles.tab}
                         onPress={() => handleCategoryChange(category)}
                     >
-                        <Text style={category === selectedCategory ? styles.selectedText : styles.text}>{category}</Text>
+                        <Text style={selectedCategory == category ? styles.selectedText : styles.text}>{category}</Text>
                     </TouchableOpacity>
                 ))}
             </ScrollView>
             <ScrollView
+                ref={scrollViewRef}
                 showsVerticalScrollIndicator={false}
                 style={styles.menuList}
-                onMomentumScrollEnd={handleScrollEnd}
-                ref={scrollViewRef}
-                >
+                onScroll={handleScroll}
+                scrollEventThrottle={16}
+            >
                 {categories.map((category, index) => (
                     <View key={category}>
                     <Text style={styles.subheading}>{category}</Text>
                     {menuItems[category].map((item, itemIndex) => (
                         <TouchableOpacity key={itemIndex} style={styles.menuItem}>
                             <View>
-                                <Text>{item}</Text>
-                                <Text>3,500 원</Text>
+                                <View style={{flexDirection: 'row', alignItems: 'center', paddingBottom: 4}}>
+                                    <Text style={styles.itemText}>{item}</Text>
+                                    {
+                                        category === 'Best 메뉴' && (
+                                            <Text style={styles.bestMenuText}>BEST</Text>
+                                        )
+                                    }
+                                </View>
+                                <Text style={styles.itemText}>3,500원</Text>
                             </View>
                             <Image source={images[0].source} style={styles.menuImage}/> 
                         </TouchableOpacity>
@@ -111,6 +142,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#E9E9E9',
         padding: 12,
         fontWeight: 'bold',
+        height: 48,
     },
     menuItem: {
         padding: 16,
@@ -119,6 +151,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        height: 100,
     },
     menuList: {
         marginTop: 50,
@@ -127,6 +160,21 @@ const styles = StyleSheet.create({
         width: 66,
         height: 66,
         borderRadius: 8,
+    },
+    itemText: {
+        fontSize: 14,
+        color: '#222222',
+        fontWeight: 'bold',
+    },
+    bestMenuText: {
+        fontSize: 10,
+        fontWeight: 'bold',
+        color: '#fff',
+        backgroundColor: '#FFD43B',
+        borderRadius: 2,
+        paddingHorizontal: 4,
+        paddingVertical: 2,
+        marginLeft: 6,
     },
     bottomPadding: {
         paddingBottom: Dimensions.get('window').height * 0.5,
