@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#222222",
     textAlign: "center",
   },
@@ -106,13 +106,13 @@ const styles = StyleSheet.create({
   },
   detailItemTitle: {
     fontSize: 12,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#666666",
   },
   detailItemText: {
     marginTop: 4,
     fontSize: 20,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#725827",
   },
 });

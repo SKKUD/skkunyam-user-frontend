@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   itemText: {
     marginTop: 4,
     fontSize: 12,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#B1B1B1",
   },
   itemTextActive: {

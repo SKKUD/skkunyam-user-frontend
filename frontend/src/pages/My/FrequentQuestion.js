@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#222222",
   },
   inputWrapper: {
@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
   input: {
     width: 290,
     fontSize: 14,
+    fontFamily: "Pretendard SemiBold",
   },
   inputIcon: {
     width: 28,

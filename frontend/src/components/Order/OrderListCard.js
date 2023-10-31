@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     paddingHorizontal: 20,
     backgroundColor: "#fff",
-    // backgroundColor: "#FFFBE5",
   },
   header: {
     width: "100%",
@@ -68,11 +67,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
-    // backgroundColor: "red",
   },
   headerTitle: {
     fontSize: 14,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Regular",
     color: "#8B8B8B",
   },
   body: {
@@ -82,7 +80,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    // backgroundColor: "blue",
   },
   bodyLeft: {
     width: 240,
@@ -111,7 +108,7 @@ const styles = StyleSheet.create({
   },
   orderDetailTitle: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#222222",
   },
   orderDetailImage: {
@@ -128,11 +125,10 @@ const styles = StyleSheet.create({
   },
   orderDetailBodyText: {
     fontSize: 14,
-    fontWeight: "normal",
+    fontFamily: "Pretendard Regular",
     color: "#464646",
   },
   bodyRight: {
-    width: 80,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -141,7 +137,7 @@ const styles = StyleSheet.create({
   bodyRightText: {
     marginTop: 4,
     fontSize: 14,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#725827",
   },
 });
