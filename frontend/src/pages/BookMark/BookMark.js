@@ -95,8 +95,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    paddingTop:
-      Constants.statusBarHeight + (Platform.OS === "android" ? 40 : 10),
+    paddingTop: Constants.statusBarHeight,
     backgroundColor: "#fff",
   },
   header: {

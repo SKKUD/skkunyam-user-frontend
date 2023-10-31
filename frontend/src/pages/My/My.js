@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   header: {
-    marginTop: 24 + (Platform.OS === "ios" ? 10 : 40),
+    marginTop: 24,
     width: 350,
     display: "flex",
     flexDirection: "column",

@@ -33,14 +33,7 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingBottom: 18,
     paddingHorizontal: 20,
-    ...Platform.select({
-      ios: {
-        marginTop: Constants.statusBarHeight + 10,
-      },
-      android: {
-        marginTop: Constants.statusBarHeight + 40,
-      },
-    }),
+    marginTop: Constants.statusBarHeight,
   },
 });
 
