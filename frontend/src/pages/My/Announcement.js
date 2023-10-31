@@ -17,7 +17,6 @@ const Announcement = ({ navigation }) => {
             style={styles.article}
             activeOpacity={0.8}
             onPress={() => {
-              console.log(article);
               navigation.navigate("AnnouncementDetail", { article: article });
             }}
           >
@@ -42,7 +41,7 @@ const styles = StyleSheet.create({
   title: {
     width: 350,
     fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     marginTop: 24,
     color: "#4E4E4E",
     marginBottom: 24,
@@ -54,18 +53,19 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     display: "flex",
     flexDirection: "column",
-    alignItems: "flex-start",
-    padding: 16,
+    justifyContent: "space-between",
+    paddingHorizontal: 16,
+    paddingVertical: 16,
     marginBottom: 16,
   },
   articleTitle: {
     fontSize: 14,
-    fontWeight: "bold",
+    fontFamily: "Pretendard SemiBold",
     color: "#222222",
   },
   articleDate: {
     fontSize: 12,
-    fontWeight: "normal",
+    fontFamily: "Pretendard Regular",
     color: "#838383",
     marginTop: 4,
   },

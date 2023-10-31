@@ -52,12 +52,12 @@ const styles = StyleSheet.create({
   },
   bodyTitle: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "Pretendard SemiBold",
     color: "#222222",
   },
   bodyDate: {
     fontSize: 12,
-    fontWeight: "normal",
+    fontFamily: "Pretendard Regular",
     color: "#838383",
     marginTop: 8,
   },
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     width: 350,
     marginTop: 24,
     fontSize: 14,
-    fontWeight: "normal",
+    fontFamily: "Pretendard Regular",
   },
 });
 

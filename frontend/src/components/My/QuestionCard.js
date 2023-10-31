@@ -1,5 +1,12 @@
-import { useState } from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useEffect, useRef, useState } from "react";
+import {
+  Animated,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 const QuestionCard = ({ question }) => {
   const [isOpened, setIsOpened] = useState(false);
@@ -7,7 +14,6 @@ const QuestionCard = ({ question }) => {
   const onPress = () => {
     setIsOpened(!isOpened);
   };
-
   return (
     <View style={styles.container}>
       <View style={styles.question}>
@@ -66,13 +72,13 @@ const styles = StyleSheet.create({
   },
   prefix: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "Pretendard SemiBold",
     color: "#222222",
   },
   title: {
     marginLeft: 8,
     fontSize: 14,
-    fontWeight: "medium",
+    fontFamily: "Pretendard Regular",
     color: "#222222",
   },
   right: {},
@@ -91,6 +97,7 @@ const styles = StyleSheet.create({
   answerText: {
     fontSize: 14,
     color: "#545454",
+    fontFamily: "Pretendard Medium",
   },
 });
 

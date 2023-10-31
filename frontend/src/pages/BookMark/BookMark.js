@@ -105,10 +105,11 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
   },
   headerSubtitle: {
     marginTop: 8,
+    fontFamily: "Pretendard SemiBold",
     fontSize: 16,
     color: "#9C9C9C",
   },
@@ -137,6 +138,7 @@ const styles = StyleSheet.create({
   },
   bodyHeaderButtonText: {
     color: "#9C9C9C",
+    fontFamily: "Pretendard Medium",
     fontSize: 16,
   },
   bodyHeaderButtonTextSelected: {

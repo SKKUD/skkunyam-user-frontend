@@ -90,13 +90,13 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#222222",
   },
   subtitle: {
     marginTop: 8,
     fontSize: 16,
-    fontWeight: "normal",
+    fontFamily: "Pretendard SemiBold",
     color: "#9C9C9C",
   },
   shown: {
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   },
   groupHeaderText: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#222222",
   },
   Item: {
@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
   },
   ItemText: {
     fontSize: 18,
+    fontFamily: "Pretendard Medium",
     color: "#4E4E4E",
   },
   ItemRight: {
@@ -159,6 +160,7 @@ const styles = StyleSheet.create({
   },
   ItemSubText: {
     fontSize: 16,
+    fontFamily: "Pretendard Medium",
     color: "#9D9D9D",
   },
   gap: {

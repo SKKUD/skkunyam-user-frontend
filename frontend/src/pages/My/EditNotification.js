@@ -33,10 +33,8 @@ const EditNotification = () => {
           <Text style={styles.bodyTitle}>푸시 알림</Text>
         </View>
         {bodyItems.map((item, index) => (
-          <View style={styles.bodyItem}>
-            <Text style={styles.bodyItemText} key={item.key}>
-              {item.text}
-            </Text>
+          <View style={styles.bodyItem} key={item.key}>
+            <Text style={styles.bodyItemText}>{item.text}</Text>
             <ToggleSwitch
               onToggle={() => onToggle(index)}
               isOn={item.state}
@@ -64,12 +62,12 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#222222",
   },
   headerSubTitle: {
     fontSize: 16,
-    fontWeight: "medium",
+    fontFamily: "Pretendard SemiBold",
     color: "#9C9C9C",
     marginTop: 8,
   },
@@ -84,7 +82,7 @@ const styles = StyleSheet.create({
   },
   bodyTitle: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     color: "#222222",
   },
   bodyItem: {
@@ -98,7 +96,7 @@ const styles = StyleSheet.create({
   },
   bodyItemText: {
     fontSize: 18,
-    fontWeight: "medium",
+    fontFamily: "Pretendard Medium",
     color: "#4E4E4E",
   },
 });

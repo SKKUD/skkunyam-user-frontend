@@ -84,18 +84,18 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: "center",
     paddingVertical: 20,
+    fontFamily: "Pretendard Regular",
   },
   boldText: {
     fontSize: 22,
     color: "#4B4B4B",
     textAlign: "center",
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
   },
   regularText: {
     fontSize: 15,
     color: "#8B8B8B",
     textAlign: "center",
-    fontWeight: "normal",
     paddingTop: 10,
   },
   buttonContainer: {
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     fontSize: 16,
   },
   kakao: {
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   signUpText: {
     color: "#8B8B8B",
     fontSize: 12,
-    fontWeight: "bold",
+    fontFamily: "Pretendard Bold",
     paddingTop: 24,
   },
 });

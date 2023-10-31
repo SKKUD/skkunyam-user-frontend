@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 16,
+    fontFamily: "Pretendard Regular",
     color: "#000000",
   },
 });
