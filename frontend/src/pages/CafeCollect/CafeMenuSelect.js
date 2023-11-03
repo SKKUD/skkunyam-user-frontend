@@ -6,10 +6,11 @@ import { images } from "../../dummy";
 import DivideLine from "../../components/CafeCollect/DivideLine";
 import MenuOption from "../../components/CafeCollect/MenuOption";
 import QuantityOption from "../../components/CafeCollect/QuantityOption";
+import CustomButton from "../../components/CafeCollect/CustomButton";
 
 const CafeMenuSelect = ({ navigation }) => {
     const route = useRoute();
-    const { item } = route.params;
+    const { item, store } = route.params;
 
     return (
         <ScrollView style={styles.container}>
@@ -18,7 +19,7 @@ const CafeMenuSelect = ({ navigation }) => {
 
             <View style={styles.titleContainer}>
                 <Text style={styles.titleText}>{item}</Text>
-                <Text style={styles.titleText}>2,900 원</Text>
+                <Text style={styles.titleText}>3,500 원</Text>
             </View>
 
             <DivideLine height={12} />
@@ -28,6 +29,10 @@ const CafeMenuSelect = ({ navigation }) => {
             <DivideLine height={12} />
 
             <QuantityOption />
+
+            <View style={{ marginTop: 20 }}>
+                <CustomButton title="3,500원 담기" width="100%" onPress={() => navigation.navigate('CafeMenuList', {store, selectedMenu: item}, )} />
+            </View>
             
         </ScrollView>
     );
