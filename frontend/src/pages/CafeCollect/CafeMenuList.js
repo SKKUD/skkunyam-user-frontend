@@ -3,10 +3,11 @@ import { Text, StyleSheet, View, ScrollView, TouchableOpacity, Dimensions, Image
 import Header from '../../components/CafeCollect/Header';
 import { useRoute } from '@react-navigation/native';
 import { images } from '../../dummy';
+import CustomButton from '../../components/CafeCollect/CustomButton';
 
 const CafeMenuList = ({ navigation }) => {
     const route = useRoute();
-    const { store } = route.params;
+    const { store, selectedMenu } = route.params;
 
     const categories = ['Best 메뉴', 'COFFEE', 'TEA', 'DESSERT', 'BAKERY'];
     const [selectedCategory, setSelectedCategory] = useState(categories[0]);
@@ -60,7 +61,7 @@ const CafeMenuList = ({ navigation }) => {
     };
 
     const handleItemClick = (item) => {
-        navigation.navigate('CafeMenuSelect', { item });
+        navigation.navigate('CafeMenuSelect', { item, store });
     }
 
     return (
@@ -110,6 +111,13 @@ const CafeMenuList = ({ navigation }) => {
                     </View>
                 ))}
                 </ScrollView>
+                {
+                    selectedMenu != null &&
+                    <View style={styles.buttonContainer}>
+                        <CustomButton title="3,500원 결제하기" width={'64%'} onPress={()=> navigation.navigate("Pay")} />
+                        <CustomButton title="장바구니" width={'32%'} />
+                    </View>
+                }
         </View>
     );
 }
@@ -183,6 +191,12 @@ const styles = StyleSheet.create({
     bottomPadding: {
         paddingBottom: Dimensions.get('window').height * 0.5,
     },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingVertical: 15,
+    }
 });
 
 export default CafeMenuList;
