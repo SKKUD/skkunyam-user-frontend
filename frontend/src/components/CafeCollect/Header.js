@@ -16,9 +16,14 @@ const Header = ({title = "", icon, onIconClick}) => {
                 <AntDesign name="left" size={24} color="black" />
             </TouchableOpacity>
             <Text style={styles.title}>{title}</Text>
-            <TouchableOpacity onPress={onIconClick}>
-                <Feather name={icon} size={24} color="black" />
-            </TouchableOpacity>
+            {
+                icon == ''? 
+                <TouchableOpacity onPress={onIconClick}>
+                    <Feather name={icon} size={24} color="black" />
+                </TouchableOpacity>
+                :
+                <View style={{width: 24}}></View>
+            }
         </View>
     )
 }

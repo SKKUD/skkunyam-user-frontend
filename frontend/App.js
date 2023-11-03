@@ -6,6 +6,7 @@ import CafeHomeScreen from "./src/pages/CafeCollect/CafeHome";
 import CafeDetailScreen from "./src/pages/CafeCollect/CafeDetail";
 import CafeMenuListScreen from "./src/pages/CafeCollect/CafeMenuList";
 import CafeMenuSelectScreen from "./src/pages/CafeCollect/CafeMenuSelect";
+import PayScreen from "./src/pages/CafeCollect/Pay";
 import Navigation from "./src/navigation/navigation";
 import EditHome from "./src/pages/My/EditHome";
 import EditNotification from "./src/pages/My/EditNotification";
@@ -71,6 +72,11 @@ const App = () => {
             name="CafeMenuSelect"
             options={{ headerShown: false }}
             component={CafeMenuSelectScreen}
+          />
+          <Stack.Screen
+            name="Pay"
+            options={{ headerShown: false }}
+            component={PayScreen}
           />
           <Stack.Screen
             name="EditHome"

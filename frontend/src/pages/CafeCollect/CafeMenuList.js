@@ -114,7 +114,7 @@ const CafeMenuList = ({ navigation }) => {
                 {
                     selectedMenu != null &&
                     <View style={styles.buttonContainer}>
-                        <CustomButton title="3,500원 결제하기" width={'64%'} />
+                        <CustomButton title="3,500원 결제하기" width={'64%'} onPress={()=> navigation.navigate("Pay")} />
                         <CustomButton title="장바구니" width={'32%'} />
                     </View>
                 }
