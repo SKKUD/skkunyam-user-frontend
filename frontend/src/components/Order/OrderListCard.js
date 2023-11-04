@@ -1,4 +1,11 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 const OrderListCard = ({ order }) => {
   const { date, day, restaurant, menu } = order;
@@ -51,7 +58,7 @@ const OrderListCard = ({ order }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 390,
+    width: Dimensions.get("window").width,
     height: 125,
     display: "flex",
     flexDirection: "column",

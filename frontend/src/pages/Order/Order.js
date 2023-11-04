@@ -29,7 +29,7 @@ const Order = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <OrderHeader />
-      <ScrollView style={styles.body} showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         {_orders.length != 0 && <RealtimeOrder orders={_orders} />}
         <View style={styles.orderList}>
           <View style={styles.orderListHeader}>
@@ -81,14 +81,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   orderList: {
-    width: 350,
-    marginLeft: 20,
+    width: Dimensions.get("window").width,
     marginTop: 30,
-  },
-  orderListHeader: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "flex-start",
+    alignItems: "center",
+  },
+  orderListHeader: {
+    width: 350,
+    display: "flex",
+    flexDirection: "column",
   },
   orderListHeaderTitle: {
     fontSize: 24,
@@ -103,6 +105,7 @@ const styles = StyleSheet.create({
   },
   orderListBody: {
     marginTop: 20,
+    width: 350,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
