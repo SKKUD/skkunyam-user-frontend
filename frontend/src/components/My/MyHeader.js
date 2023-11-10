@@ -10,11 +10,13 @@ import {
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
 
-const MyHeader = ({ title }) => {
+const MyHeader = ({ title, onBackClick }) => {
   const navigation = useNavigation();
-  const onBackClick = () => {
-    navigation.goBack();
-  };
+  if (!onBackClick) {
+    onBackClick = () => {
+      navigation.goBack();
+    };
+  }
 
   return (
     <View style={styles.container}>
@@ -42,6 +44,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    width: "100%",
+    paddingBottom: 24,
   },
   Wrapper: {},
   headerLeftArrow: {

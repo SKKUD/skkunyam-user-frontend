@@ -7,20 +7,43 @@ import {
   View,
 } from "react-native";
 import MyHeader from "../../components/My/MyHeader";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DraggableList from "../../components/My/draggableList";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 
 const EditHome = () => {
-  const [shown, setShown] = useState([
-    { text: "오늘의 메뉴", key: 1 },
-    { text: "가장 많이 이용한 매장", key: 2 },
-    { text: "가장 많이 주문한 메뉴", key: 3 },
-    { text: "내 포인트", key: 4 },
-  ]);
-  const [hidden, setHidden] = useState([
-    { text: "내 근처에 있는 매장", key: 5 },
-    { text: "식권함", key: 6 },
-  ]);
+  const navigation = useNavigation();
+  const [shown, setShown] = useState([]);
+  const [hidden, setHidden] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const json = JSON.parse(await AsyncStorage.getItem("homeItem"));
+
+      if (json?.shown && json?.shown.length > 0) {
+        setShown(json.shown);
+      } else {
+        setShown([
+          { text: "바로 주문하기", key: 1 },
+          { text: "오늘의 메뉴", key: 2 },
+          { text: "많이 이용한 매장", key: 3 },
+          { text: "포인트", key: 4 },
+        ]);
+      }
+
+      if (json?.hidden && json?.hidden.length > 0) {
+        setHidden(json.hidden);
+      } else {
+        setHidden([
+          { text: "내 근처에 있는 매장", key: 5 },
+          { text: "식권함", key: 6 },
+        ]);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const onShownPress = (item) => {
     setShown(shown.filter((i) => i != item));
@@ -32,9 +55,21 @@ const EditHome = () => {
     setShown([...shown, item]);
   };
 
+  const onBackClick = async () => {
+    const parsed = { shown: shown, hidden: hidden };
+
+    try {
+      await AsyncStorage.setItem("homeItem", JSON.stringify(parsed));
+      navigation.goBack();
+    } catch (error) {
+      console.error("Error saving data to AsyncStorage: ", error);
+      // Handle error appropriately (e.g., show an error message to the user)
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <MyHeader />
+      <MyHeader onBackClick={onBackClick} />
       <View style={styles.body}>
         <View style={styles.bodyHeader}>
           <Text style={styles.title}>홈 화면 편집</Text>
@@ -52,18 +87,14 @@ const EditHome = () => {
           <View style={styles.groupHeader}>
             <Text style={styles.groupHeaderText}>숨긴 항목</Text>
           </View>
-          {hidden.map((item, index) => (
-            <View key={index} style={styles.Item}>
+          {hidden.map((item) => (
+            <View style={styles.Item} key={item.key}>
               <View style={styles.ItemLeft}>
-                <Text style={styles.ItemText}>{item.text}</Text>
+                <Text style={styles.ItemText}>{item?.text}</Text>
               </View>
-              <View style={[styles.ItemRight, { justifyContent: "flex-end" }]}>
-                {/* <Image
-                  style={styles.moveItemIcon}
-                  source={require("../../../assets/icons/moveIcon.png")}
-                /> */}
+              <View style={styles.ItemRight}>
                 <TouchableOpacity onPress={() => onHiddenPress(item)}>
-                  <Text style={styles.ItemSubText}>보기</Text>
+                  <Text style={styles.ItemSubText}>보이기</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -152,7 +183,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
   },
   moveItemIcon: {
     width: 20,

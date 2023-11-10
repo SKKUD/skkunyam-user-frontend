@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   body: {
-    marginTop: 40,
+    // marginTop: 40,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

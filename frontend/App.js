@@ -50,7 +50,7 @@ const App = () => {
           />
           <Stack.Screen
             name="Main"
-            options={{ headerShown: false }}
+            options={{ headerShown: false, unmountOnBlur: true }}
             component={Navigation}
           />
           <Stack.Screen
