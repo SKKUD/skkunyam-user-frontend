@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  View,
-  TouchableOpacity,
-  StyleSheet,
-  Image,
-  Platform,
-} from "react-native";
+import { View, TouchableOpacity, StyleSheet, Image } from "react-native";
 import Constants from "expo-constants"; // Constants로 불러온다.
 
 const OrderHeader = ({ onIconClick }) => {

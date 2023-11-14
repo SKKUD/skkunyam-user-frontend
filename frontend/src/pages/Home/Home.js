@@ -15,6 +15,8 @@ import TodayMenuCarousel from "../../components/Home/TodayMenuCarousel";
 import { itemSortOrder, menus, stores } from "../../components/Home/dummy";
 import MostStoreCard from "../../components/Home/MostStoreCard";
 import MostMenuCard from "../../components/Home/MostMenuCard";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useIsFocused } from "@react-navigation/native";
 
 const Home = ({ navigation }) => {
   const user = {
@@ -56,7 +58,17 @@ const Home = ({ navigation }) => {
   };
 
   const renderDict = {
-    todayMenu: (
+    1: (
+      <View style={styles.quickOrderContainer}>
+        <View style={styles.quickOrderHeader}>
+          <Text style={styles.quickOrderTitle}>바로주문하기</Text>
+        </View>
+        <View style={styles.quickOrderBody}>
+          <Text>여기 바뀔 것 같아서 나중에 만들게요</Text>
+        </View>
+      </View>
+    ),
+    2: (
       <>
         <View style={styles.todayMenuContainer}>
           <View style={styles.todayMenuHeader}>
@@ -89,63 +101,67 @@ const Home = ({ navigation }) => {
         </View>
       </>
     ),
-    MostStore: (
-      <View style={styles.mostContainer}>
-        <View style={styles.mostHeader}>
-          <View style={styles.mostHeaderLeft}>
-            <Text style={styles.mostTitle}>{user.name} 님이</Text>
-            <Text style={styles.mostTitle}>가장 많이 이용한 매장이에요!</Text>
-          </View>
-          <TouchableOpacity
-            style={styles.mostHeaderRight}
-            onPress={onMostStoreMoreClick}
-          >
-            <View style={styles.moreWrapper}>
-              <Text stlye={styles.moreText}>더보기</Text>
-              <Image source={require("../../../assets/icons/rightIcon.png")} />
+    3: (
+      <>
+        <View style={styles.mostContainer}>
+          <View style={styles.mostHeader}>
+            <View style={styles.mostHeaderLeft}>
+              <Text style={styles.mostTitle}>{user.name} 님이</Text>
+              <Text style={styles.mostTitle}>가장 많이 이용한 매장이에요!</Text>
             </View>
-          </TouchableOpacity>
-        </View>
-        <ScrollView
-          style={styles.mostBody}
-          showsHorizontalScrollIndicator={false}
-          horizontal={true}
-        >
-          {stores.map((store, index) => (
-            <MostStoreCard key={index} store={store} />
-          ))}
-        </ScrollView>
-      </View>
-    ),
-    MostMenu: (
-      <View style={styles.mostContainer}>
-        <View style={styles.mostHeader}>
-          <View style={styles.mostHeaderLeft}>
-            <Text style={styles.mostTitle}>{user.name} 님이</Text>
-            <Text style={styles.mostTitle}>가장 많이 주문한 메뉴에요!</Text>
+            <TouchableOpacity
+              style={styles.mostHeaderRight}
+              onPress={onMostStoreMoreClick}
+            >
+              <View style={styles.moreWrapper}>
+                <Text stlye={styles.moreText}>더보기</Text>
+                <Image
+                  source={require("../../../assets/icons/rightIcon.png")}
+                />
+              </View>
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity
-            style={styles.mostHeaderRight}
-            onPress={onMostMenuCMorelick}
+          <ScrollView
+            style={styles.mostBody}
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
           >
-            <View style={styles.moreWrapper}>
-              <Text stlye={styles.moreText}>더보기</Text>
-              <Image source={require("../../../assets/icons/rightIcon.png")} />
-            </View>
-          </TouchableOpacity>
+            {stores.map((store, index) => (
+              <MostStoreCard key={index} store={store} />
+            ))}
+          </ScrollView>
         </View>
-        <ScrollView
-          style={styles.mostBody}
-          showsHorizontalScrollIndicator={false}
-          horizontal={true}
-        >
-          {menus.map((menu, index) => (
-            <MostMenuCard key={index} menu={menu} />
-          ))}
-        </ScrollView>
-      </View>
+        <View style={styles.mostContainer}>
+          <View style={styles.mostHeader}>
+            <View style={styles.mostHeaderLeft}>
+              <Text style={styles.mostTitle}>{user.name} 님이</Text>
+              <Text style={styles.mostTitle}>가장 많이 주문한 메뉴에요!</Text>
+            </View>
+            <TouchableOpacity
+              style={styles.mostHeaderRight}
+              onPress={onMostMenuCMorelick}
+            >
+              <View style={styles.moreWrapper}>
+                <Text stlye={styles.moreText}>더보기</Text>
+                <Image
+                  source={require("../../../assets/icons/rightIcon.png")}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
+          <ScrollView
+            style={styles.mostBody}
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+          >
+            {menus.map((menu, index) => (
+              <MostMenuCard key={index} menu={menu} />
+            ))}
+          </ScrollView>
+        </View>
+      </>
     ),
-    MyStamp: (
+    4: (
       <View style={styles.pointContainer}>
         <View style={styles.pointHeader}>
           <Text style={styles.pointHeaderTitle}>{user.name} 님의 포인트</Text>
@@ -189,10 +205,40 @@ const Home = ({ navigation }) => {
     ),
   };
 
+  const isFocused = useIsFocused();
+
   const [render, setRender] = useState([]);
-  const [renderOrder, setRenderOrder] = useState(itemSortOrder);
+  const [renderOrder, setRenderOrder] = useState([]);
   useEffect(() => {
-    setRender(renderOrder.map((item) => renderDict[item]));
+    const fetchData = async () => {
+      try {
+        const json = JSON.parse(await AsyncStorage.getItem("homeItem"));
+
+        if (json?.shown && json?.shown.length > 0) {
+          setRenderOrder(json?.shown);
+        } else {
+          setRenderOrder([
+            { text: "주문 현황", key: 1 },
+            { text: "내 주변 매장", key: 2 },
+            { text: "내가 찜한 메뉴", key: 3 },
+            { text: "내가 쓴 리뷰", key: 4 },
+          ]);
+        }
+      } catch (error) {
+        console.error("Error fetching data from AsyncStorage: ", error);
+      }
+    };
+
+    fetchData();
+  }, [isFocused]);
+
+  // This useEffect will run whenever renderOrder changes
+  useEffect(() => {
+    setRender(
+      renderOrder.map((item) => {
+        return renderDict[item.key];
+      })
+    );
   }, [renderOrder]);
 
   return (
@@ -231,15 +277,6 @@ const Home = ({ navigation }) => {
               </Text>
             </View>
           </ImageBackground>
-        </View>
-        {/* 바로주문하기 */}
-        <View style={styles.quickOrderContainer}>
-          <View style={styles.quickOrderHeader}>
-            <Text style={styles.quickOrderTitle}>바로주문하기</Text>
-          </View>
-          <View style={styles.quickOrderBody}>
-            <Text>여기 바뀔 것 같아서 나중에 만들게요</Text>
-          </View>
         </View>
         {render.map((item, index) => (
           <View key={index}>{item}</View>

@@ -19,7 +19,7 @@ const DraggableList = ({ setShown, shown, onShownPress }) => {
       <ScaleDecorator activeScale={1.05}>
         <View style={[styles.Item]}>
           <View style={styles.ItemLeft}>
-            <Text style={styles.ItemText}>{item.text}</Text>
+            <Text style={styles.ItemText}>{item?.text}</Text>
           </View>
           <View style={styles.ItemRight}>
             <TouchableOpacity onPressIn={drag} disabled={isActive}>
@@ -40,7 +40,7 @@ const DraggableList = ({ setShown, shown, onShownPress }) => {
   return (
     <GestureHandlerRootView
       style={{
-        height: 60 * shown.length,
+        height: 60 * shown?.length,
         backgroundColor: "#e9e9e9",
         width: Dimensions.get("window").width,
       }}
